@@ -1,0 +1,371 @@
+.video{
+  background:black;
+  position:absolute;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+  z-index: 2;
+  overflow:hidden;
+
+  transition: none;
+
+  h1{
+    position: absolute;
+    top:0;
+    left:2em;
+    font-size: 1.5em;
+    text-shadow: 1px 1.5px 2px rgba(0,0,0,0.5);
+    line-height: 1.5em;
+    padding: .3em;
+    margin: 0;
+    transition: all .3s;
+    span{
+      display: none;
+    }
+  }
+
+  #collapseVideo {
+    transition: all .3s;
+    z-index:4;
+    position: absolute;
+    opacity: 1;
+    i {
+      text-shadow: 1px 1.5px 2px rgba(0,0,0,0.5);
+      padding: .3em;
+      font-size: 2em;
+      cursor: pointer;
+    }
+  }
+
+  video{
+    height:100%;
+    width:100%;
+    padding-bottom:60px;
+    transition: padding-bottom .5s;
+  }
+  &.hidden{
+    cursor: none;
+    video{
+      padding:0px;
+    }
+    #collapseVideo, h1 {
+      opacity: 0;
+    }
+  }
+
+  &.collapsed {
+    top:auto;
+    bottom: 10px;
+    left:10px;
+    right:10px;
+    height: 120px;
+    width: 214px;
+    transition: all .3s;
+
+    .controls > img {
+      display:none;
+    }
+    #collapseVideo{
+      display:none;
+    }
+    > .wrapper {
+      padding: 0px;
+    }
+    video{
+      padding:0px;
+      border: solid 2px $primary-color;
+    }
+    .controls {
+      top:50%;
+      margin-bottom: -30px;
+      background:transparent;
+      transition: all .3s;
+    }
+    overflow:visible;
+    .buttonsRight, .seektracker, #volume, .muteIcon, .cast, .controls, #next, #prev{
+      display:none;
+    }
+    &:hover{
+      .controls, h1 {
+        display: block;
+      }
+    }
+    #play-pause {
+      margin-left: -28px;
+    }
+    #prev{
+      margin-left: -75px;
+    }
+    h1{
+      position: absolute;
+      padding-left: 10px;
+      height:30px;
+      display: block;
+      font-size: 1em;
+      line-height: 30px;
+      left: 0px;
+      right: 0px;
+      top: -30px;
+      background: $primary-color;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      opacity: 1;
+      cursor: pointer;
+      span{
+        float: right;
+        cursor: pointer;
+        display: block;
+        position: relative;
+      }
+    }
+  }
+
+  .wrapper{
+    position:absolute;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    top:0px;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .preloader-wrapper, >.btn-large, >.btn-large[disabled=false]{
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-25px;
+    margin-top:-25px;
+    background:transparent !important;
+    cursor:default;
+    &:hover {
+      background: transparent !important;
+    ;
+    }
+    &.btn-large{
+      margin-left:-27.75px;
+      margin-top:-27.75px;
+    }
+  }
+}
+
+
+
+.controls {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height:60px;
+  background:$primary-color;
+  transition: all .3s;
+
+  img{
+    position:absolute;
+    bottom:10px;
+    width:10%;
+    left:10px;
+  }
+
+
+  transition:all .5s;
+  .time{
+    position:absolute;
+    right:4px;
+    font-size:10px;
+    font-weight: bold;
+    color:$primary-color-light;
+    opacity:0;
+    transition: opacity .3s;
+    &:first-child{
+      left:4px;
+      right:0px;
+      overflow:hidden;
+    }
+  }
+
+  #volume .seektracker{
+    height:10px;
+  }
+
+  #progress {
+    > .time {
+      right: auto;
+      bottom: 30px;
+      background: $primary-color-light;
+      color:$primary-color-dark;
+      padding:0px 5px;
+      height:13px;
+      line-height: 13px;
+      border-radius:13px;
+      margin-left:-15px;
+      overflow: visible;
+      z-index:999;
+      pointer-events: none;
+      &:after{
+        content:" ";
+        width:5px;
+        height:5px;
+        transform: rotate(45deg);
+        position: absolute;
+        left:11px;
+        bottom:-2px;
+        background: inherit;
+        z-index: 0;
+      }
+    }
+    &:hover .time {
+      opacity: 1;
+    }
+  }
+
+  .seektracker {
+    position:absolute;
+    transition:all .5s;
+    margin:0px;
+    flex:1;
+    background: $primary-color-dark;
+    cursor: pointer;
+    left:10%;
+    margin-left:20px;
+    right:120px;
+    bottom:10px;
+    height:10px;
+    &:hover {
+      height: 15px;
+      .time{
+        opacity: 1;
+      }
+    }
+    .seekbuffer {
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      background:rgba(0,0,0,.3);
+    }
+
+    .seekprogress {
+      background: $secondary-color;
+      top: 0px;
+      bottom: 0px;
+      position: absolute;
+      > div {
+        position: absolute;
+        right: 0px;
+        top: -1px;
+        bottom: -1px;
+        background: inherit;
+        width: 1px;
+      }
+      .time{
+        color: $primary-color-dark;
+        z-index:2;
+      }
+    }
+  }
+
+  #play-pause{
+    position:absolute;
+    top:-28px;
+    bottom:0px;
+    left:50%;
+    margin-left:-38px;
+  }
+
+  #next, #prev{
+    top:-19px;
+    left:50%;
+    margin-left:70px;
+  }
+  #prev{
+    margin-left:-85px;
+  }
+  .buttonsRight {
+    position: absolute;
+    top:-19px;
+    right:10px;
+    >*{
+      display:inline-block;
+    }
+    .btn-medium, .btn-large{
+      position: static;
+      width:37px;
+      height:37px;
+      font-size: 14px;
+      i {
+        line-height: 37px;
+      }
+    }
+    .fixed-action-btn {
+      right:auto;
+      bottom:auto;
+      position: relative;
+      padding-top:0px;
+      margin-right: 4px;
+      ul {
+        left: auto;
+        bottom: 33px;
+      }
+    }
+    .menuButton{
+      position: relative;
+      overflow: visible;
+      margin-right: 4px;
+      &:hover .collection{
+        display: block;
+      }
+      .collection {
+        display: none;
+        position: absolute;
+        bottom:25px;
+        right: 0px;
+        z-index: 2;
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+    }
+    .collection-item{
+      cursor:pointer;
+      min-width: 130px;
+      display: block;
+    }
+  }
+}
+
+.hidden .controls{
+  opacity: 0;
+  bottom:-50px;
+}
+
+.hidden .cast{
+  opacity: 0;
+}
+
+#volume{
+  .seektracker{
+    right:10px;
+    width:80px;
+    left:auto;
+  }
+}
+
+.muteIcon {
+  position: absolute;
+  right: 90px;
+  bottom: 3px;
+  color:$secondary-color;
+  cursor:pointer;
+}
+
+.cast.active{
+  color:$secondary-color-dark;
+}
+
+#continueWatching{
+  top:50%;
+  margin-top:-100px;
+}

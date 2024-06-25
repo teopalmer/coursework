@@ -1,0 +1,240 @@
+.movie-detail-backdrop, .movie-detail-backdrop-wrapper {
+  position:absolute;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  background-size:cover;
+  background-position: center center;
+  //opacity: .3;
+  z-index:0;
+}
+
+.blurred {
+  position: absolute;
+  bottom:0px;
+  left: 0px;
+  right:0px;
+  height:100%;
+  overflow:hidden;
+
+  .movie-detail-backdrop-wrapper {
+    height: 100vh;
+    top:auto;
+    $blur: 10px;
+    -webkit-filter: blur($blur);
+    -moz-filter: blur($blur);
+    -o-filter: blur($blur);
+    -ms-filter: blur($blur);
+    filter: blur($blur);
+    opacity: .2;
+  }
+}
+
+#play{
+  right: 35px;
+  position: absolute;
+  top: -30px;
+}
+
+.detail {
+
+  .poster {
+    vertical-align: top;
+    width:30%;
+    top:-100px;
+    bottom:25px;
+    background-size: 80%;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    position:absolute;
+  }
+
+  h1 {
+    margin-top:0px;
+  }
+
+  .description {
+    vertical-align: top;
+    margin-top: 0;
+    cursor: default;
+
+    .stars {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+
+      .full {
+        position: absolute;
+        top: 0;
+        overflow: hidden;
+      }
+
+      i {
+        font-size: 14px !important;
+        margin-top: 4px;
+      }
+    }
+
+    .header i {
+      font-size: 8px;
+      vertical-align: 1px;
+      padding:0px 5px;
+    }
+  }
+  #tabs{
+    position: absolute;
+    top: -49px;
+    right:0px;
+    left: 30%;
+    bottom:0px;
+
+    .tabs{
+      background:transparentize($primary-color-dark, .2);
+      top: 0px;
+      left: -5px;
+      margin-right: 115px;
+      width: auto;
+    }
+
+    cursor:pointer;
+    > .row {
+      margin-bottom:0px;
+      > .col {
+        position: absolute;
+        top: 49px;
+        left: 0px;
+        bottom: 0px;
+      }
+    }
+  }
+}
+.container.detail {
+  border-top:solid 1px $secondary-color-dark;
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  left:0px;
+  width:auto;
+  height:400px;
+  max-height:75%;
+  box-sizing: content-box;
+  background: $primary-color-dark;
+  .scrollable{
+    padding:25px;
+    padding-left:0px;
+    box-sizing: border-box;
+    position: absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    max-height:100%;
+    overflow:auto;
+  }
+  >.scrollable{
+    left:30%;
+  }
+}
+
+.top-bar{
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  height:32px;
+  padding:0px 2px;
+  background:transparentize($primary-color-dark, .2);
+  z-index:2;
+
+  .progress{
+    position: absolute;
+    bottom: -17px;
+    left: 0px;
+    right: 0px;
+  }
+
+  a img {
+    height:15px;
+    vertical-align: text-bottom;
+  }
+
+  .right > div{
+    display:inline-block;
+  }
+  button{
+    height:32px;
+    line-height:28px;
+    width:32px;
+    padding:0px;
+    text-align: center;
+    background: transparent !important;
+    border:none;
+    font-size: 20px;
+    display:inline-block;
+    i {
+      margin:0px;
+    }
+  }
+
+  #back-btn {
+    color: #fff;
+    cursor: pointer;
+    i {
+      line-height: 32px;
+    }
+  }
+
+  .back {
+    background: transparent;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+
+
+    i {
+      font-size: 30px;
+    }
+  }
+}
+
+.movie-detail-backdrop.poster {
+  display:none;
+}
+
+
+@media only screen and (max-width: 650px) {
+  .detail {
+    #tabs {
+      left:35px;
+      .scrollable{
+        padding-left:10px;
+        left:0px;
+      }
+    }
+    .poster{
+      display: none;
+    }
+    .scrollable{
+      left:70px;
+    }
+    .blurred .poster {
+      width:100%;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+  .movie-detail-backdrop {
+    display:none;
+  }
+  .movie-detail-backdrop.poster {
+    display: block;
+  }
+  .container.detail > .scrollable {
+    left:35px;
+  }
+}
